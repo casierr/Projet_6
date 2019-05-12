@@ -1,0 +1,47 @@
+<html>
+<title>Prévision retard de vol</title>
+        <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
+        <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+<div class="container">
+<h2>Analysez vos données textuelles</h2>
+<form action="" method="post" role="form">
+    {{ form.csrf }}
+<div class="form-group">
+<label for="titre_StackOverFlow">Titre :</label>
+<br>	  
+<!-- <input type="text" class="form-control" id="titre_StackOverFlow" name="titre_StackOverFlow" placeholder="Entrez un Titre">!-->
+<textarea class="form-group" id="titre_StackOverFlow" rows="1" name="titre_StackOverFlow" placeholder="Entrez un titre..."></textarea>
+<br>
+<br> 
+<label for="question_StackOverFlow">Question:</label>
+<br>
+<textarea class="form-group" id="question_StackOverFlow" rows="10" name="question_StackOverFlow" placeholder="Entrez une question..."></textarea>
+
+</div>
+<br>
+<button type="submit" class="btn btn-success">Valider</button>
+</form>{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+ 
+{% for message in messages %}
+{% if "Error" not in message[1]: %}
+<div class="alert alert-info">
+                <strong>Success! </strong> {{ message[1] }}</div>
+{% endif %}
+ 
+{% if "Error" in message[1]: %}
+<div class="alert alert-warning">
+                {{ message[1] }}</div>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}
+ 
+</div>
+</body>
+
+</html>
+
+
